@@ -1,0 +1,68 @@
+﻿<html>
+<head>
+  <title>Patient</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+</head>
+<body>
+  <div>
+    <div>
+      <div>
+        <div>
+          <h2 style="padding: 59px;">Patient Details</h2>
+          <div>
+            <div>
+              <div>
+                <div style="margin-left: -30px;">
+                  <div style="margin-top: -27px;">
+                    <label class="col-form-label label-sz" style="padding: 88px;font-weight: 700;font-size: larger;">Choose Patient ID</label>
+                  </div>
+                  <div style="margin-left: 85px;margin-top: 31px;">
+                    <select id="payment" style="width: 123px;height: 31px;">
+                      <option value="">Select</option>
+                    </select>
+                  </div>
+
+                </div>
+                <div style="margin-left: 56px;padding: 16px;font-size: x-large;font-weight: 600;">
+                  <label id="patient"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- #######################   Script starts   #######################-->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="./"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        var arrayphy = [[1, 'anish', 18], [2, 'arun', 19], [3, 'bala', 20], [4, 'chandru', 20], [5, 'ganesh', 30]]
+        var selectdata = ''
+        var i = 1
+        for (key in arrayphy) {
+          var BrandID = arrayphy[key][0];
+          var Brandname = arrayphy[key][1];
+          selectdata = selectdata + '<option class="option-bg-color" value="' + i + '">' + BrandID + '</option>'
+          i = i + 1
+        }
+        $('#payment').append(selectdata);
+        $('#payment').on('change', function (e) {
+          var optionSelected = $("option:selected", this);
+          var valueSelected = this.value;
+          for (j in arrayphy) {
+            var BrandID1 = arrayphy[j][0];
+            if (BrandID1 == valueSelected) {
+              var patientname = arrayphy[j][1];
+              var age = arrayphy[j][2];
+              document.getElementById("patient").innerHTML = patientname + "<br/>" + age;
+            }
+          }
+        });
+      });
+    </script>
+</body>
+</html>
